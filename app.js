@@ -3,13 +3,11 @@ let dataset = require('./dataset.json');
 
 let emails = dataset.emails;
 
-let sortEmails = emails.reduce((accum, current) => {
-  if(accum.hasOwnProperty(current.email)){
-    accum[current.email]++;
+let filterDuplicateEmails = emails.reduce((allUsers, currentUsers) => {
+  if(allUsers.hasOwnProperty(currentUsers.email)){
+    allUsers[currentUsers.email]++;
   }else{
-    accum[current.email] = 1;
+    allUsers[currentUsers.email] = 1;
   }
-  return accum
+  return allUsers
 }, {});
-console.log(sortEmails);
-console.log(emails.length)
